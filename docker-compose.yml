@@ -10,7 +10,7 @@ services:
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: ocholi
-      WORDPRESS_DB_PASSWORD: 1215Jack_01
+      WORDPRESS_DB_PASSWORD: 10_kcaJ5121
       WORDPRESS_DB_NAME: ocholi_db
     volumes:
       - nutshot_data:/var/www/html/nutshot
@@ -26,7 +26,7 @@ services:
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: ocholi
-      WORDPRESS_DB_PASSWORD: 1215Jack_01
+      WORDPRESS_DB_PASSWORD: 10_kcaJ5121
       WORDPRESS_DB_NAME: ocholi_db
     volumes:
       - haymay_data:/var/www/html/haymay
@@ -42,7 +42,7 @@ services:
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: ocholi
-      WORDPRESS_DB_PASSWORD: 1215Jack_01
+      WORDPRESS_DB_PASSWORD: 10_kcaJ5121
       WORDPRESS_DB_NAME: ocholi_db
     volumes:
       - gateby_data:/var/www/html/gateby
@@ -52,10 +52,10 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: 10_kcaJ5121
+      MYSQL_ROOT_PASSWORD: 1215Jack_01
       MYSQL_DATABASE: ocholi_db
       MYSQL_USER: ocholi
-      MYSQL_PASSWORD: 1215Jack_01
+      MYSQL_PASSWORD: 10_kcaJ5121
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -67,7 +67,7 @@ services:
       - "1080:80"
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: 10_kcaJ5121
+      MYSQL_ROOT_PASSWORD: 1215Jack_01
     networks:
       - wp_network
 
