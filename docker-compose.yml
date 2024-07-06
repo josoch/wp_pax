@@ -1,8 +1,10 @@
 version: '3.8'
 
 services:
-  wordpress:
-    image: wordpress:latest
+  nutshot:
+    build:
+      context: .
+      dockerfile: Dockerfile.nutshot
     ports:
       - "1004:80"
     environment:
@@ -11,14 +13,46 @@ services:
       WORDPRESS_DB_PASSWORD: 1215Jack_01
       WORDPRESS_DB_NAME: ocholi_db
     volumes:
-      - wordpress_data:/var/www/html
+      - nutshot_data:/var/www/html/nutshot
+    networks:
+      - wp_network
+
+  haymay:
+    build:
+      context: .
+      dockerfile: Dockerfile.haymay
+    ports:
+      - "1003:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ocholi
+      WORDPRESS_DB_PASSWORD: 1215Jack_01
+      WORDPRESS_DB_NAME: ocholi_db
+    volumes:
+      - haymay_data:/var/www/html/haymay
+    networks:
+      - wp_network
+
+  gateby:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateby
+    ports:
+      - "1006:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: ocholi
+      WORDPRESS_DB_PASSWORD: 1215Jack_01
+      WORDPRESS_DB_NAME: ocholi_db
+    volumes:
+      - gateby_data:/var/www/html/gateby
     networks:
       - wp_network
 
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_ROOT_PASSWORD: 10_kcaJ5121
       MYSQL_DATABASE: ocholi_db
       MYSQL_USER: ocholi
       MYSQL_PASSWORD: 1215Jack_01
@@ -30,7 +64,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - "1044:80"
+      - "1080:80"
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: 10_kcaJ5121
@@ -38,7 +72,9 @@ services:
       - wp_network
 
 volumes:
-  wordpress_data:
+  nutshot_data:
+  haymay_data:
+  gateby_data:
   db_data:
 
 networks:
